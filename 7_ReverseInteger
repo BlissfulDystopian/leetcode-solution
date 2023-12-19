@@ -1,16 +1,15 @@
+#define MAX_INT 2147483647
+#define MIN_INT -2147483648
+
 class Solution {
 public:
     int reverse(int x) {
-        long int result = 0;
-        while (x != 0) {
-            if(!result)
-                result = x % 10;
-            else {   
-                result *= 10;
-                result += x % 10;
-            }   
+        long result { 0 };
+        while (x) {
+            result *= 10;
+            result += x % 10;           
             x /= 10;
         }
-        return(result < -2147483648 || result > 2147483647) ? 0 : result;
+        return (result < MIN_INT || result > MAX_INT) ? 0 : result;
     }
 };
